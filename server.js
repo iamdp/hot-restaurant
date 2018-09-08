@@ -84,6 +84,10 @@ app.get('/add', function(req, res) {
   res.sendFile(path.join(__dirname, 'makeReservation.html'));
 });
 
+app.get('/viewtables', function(req, res) {
+  res.sendFile(path.join(__dirname, 'viewtable.html'));
+});
+
 // Displays all reservation
 app.get('/api/reservation', function(req, res) {
   return res.json(reservation);
@@ -104,18 +108,6 @@ app.get('/api/reservation/:reservation', function(req, res) {
       return res.json(reservation[i]);
     }
   }
-});
-
-app.post('/api/reservation/:reservation', function(req, res) {
-  var chosen = req.params.reservation;
-  if (reservation.length < 5) {
-    reservation.push(req.body);
-    res.json(true);
-  } else {
-    waitlist.push(req.body);
-    res.json(false);
-  }
-  return res.json(false);
 });
 
 // Create New Reservation - takes in JSON input
