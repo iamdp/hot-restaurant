@@ -9,14 +9,16 @@ var PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //empty array for our reservations
-var array = [];
+var reservationList = [];
+var waitingList = [];
+var table = 5;
 //reservion constructor
-function Reserve(name, phoneNumber, email, uniqueId) {
+/*function Reserve(name, phoneNumber, email, uniqueId) {
   this.name = name;
   this.phoneNumber = phoneNumber;
   this.email = email;
   this.uniqueId = uniqueId;
-}
+}*/
 //=========================================================
 //index page
 app.get('/', function(req, res) {
@@ -33,11 +35,20 @@ app.get('/view-table', function(req, res) {
 //wait list page
 app.get('/wait-list', function(req, res) {
   res.sendFile(path.join(__dirname, 'waitlist.html'));
+  return res.json(waitingList);
 });
 //creating a new reservation
 app.post('/make-reservations', function(req, res) {
   newReservation = req.body;
   console.log(newReservation);
+  if (tables > 0) {
+    reservationList.push(newReservation);
+    res.join(newReservation);
+    tables--;
+  } else if (tables < 0) {
+    waitingList.push(newReservation);
+    res.join(newReservation);
+  }
 });
 
 //===========================================================
