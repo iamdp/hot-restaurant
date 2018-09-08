@@ -81,7 +81,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/add', function(req, res) {
-  res.sendFile(path.join(__dirname, 'makeResvation.html'));
+  res.sendFile(path.join(__dirname, 'makeReservation.html'));
 });
 
 // Displays all reservation
