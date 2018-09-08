@@ -98,17 +98,17 @@ app.get('/api/reservation/:reservation', function(req, res) {
       return res.json(reservation[i]);
     }
   }
+});
 
-  app.post('/api/reservation', function(req, res) {
-    if (reservation.length < 5) {
-      reservation.push(req.body);
-      res.json(true);
-    } else {
-      waitlist.push(req.body);
-      res.json(false);
-    }
-  });
-
+app.post('/api/reservation/:reservation', function(req, res) {
+  var chosen = req.params.reservation;
+  if (reservation.length < 5) {
+    reservation.push(req.body);
+    res.json(true);
+  } else {
+    waitlist.push(req.body);
+    res.json(false);
+  }
   return res.json(false);
 });
 
