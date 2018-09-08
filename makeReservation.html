@@ -111,7 +111,8 @@
 
         // Here we get the location of the root page.
         // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-        var currentURL = window.location.origin;
+        //var currentURL = window.location.origin;
+        var currenetURL = 'http://142.1.49.148:3000/'
 
         $.post(currentURL + "/api/tables", newReservation,
             function (data) {
