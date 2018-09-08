@@ -18,10 +18,10 @@ app.use(bodyParser.json());
 var reservation = [
   {
     reservName: 'David',
-    reservPhone: 111 - 222 - 3333,
+    reservPhone: '111 - 222 - 3333',
     reservEmail: 'david@gmail.com',
-    reservDate: 2018 - 09 - 08,
-    reservTime: 1700
+    reservDate: '2018 - 09 - 08',
+    reservTime: '1700'
   },
   {
     reservName: 'Hayley',
@@ -75,11 +75,11 @@ var waitlist = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'home.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/add', function(req, res) {
-  res.sendFile(path.join(__dirname, 'add.html'));
+app.get('/reserve', function(req, res) {
+  res.sendFile(path.join(__dirname, 'makeReservation.html'));
 });
 
 // Displays all reservation
@@ -111,9 +111,9 @@ app.post('/api/reservation', function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newreservation.routeName = newcharacter.name
-    .replace(/\s+/g, '')
-    .toLowerCase();
+  // newreservation.routeName = newreservation.reservName
+  //   .replace(/\s+/g, '')
+  //   .toLowerCase();
 
   console.log(newreservation);
 

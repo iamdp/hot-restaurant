@@ -25,5 +25,7 @@
     "express": "^4.16.3",
     "path": "^0.12.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jquery": "^3.3.1"
+  }
 }

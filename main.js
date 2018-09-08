@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
   queryURL = 'localhost:3000/api/reservation';
   $('.submit').click(function() {
     $.post(queryURL, function(data, status) {
@@ -13,3 +13,4 @@ $(document).ready(function() {
     console.log(response);
   });
 });
+*/

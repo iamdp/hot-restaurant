@@ -24,7 +24,7 @@
             <br>
 
             <div class="text-center">
-                <a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span>
+                <a href="/reservation"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span>
                         View Tables</button></a>
                 <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
             </div>
@@ -74,7 +74,7 @@
 
         <footer class="footer">
             <div class="container">
-                <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
+                <p><a href="/api/reservation">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
             </div>
         </footer>
 
@@ -114,7 +114,7 @@
         //var currentURL = window.location.origin;
         var currenetURL = 'http://142.1.49.148:3000/'
 
-        $.post(currentURL + "/api/tables", newReservation,
+        $.post("/api/reservation", newReservation,
             function (data) {
 
                 // If a table is available... tell user they are booked.
