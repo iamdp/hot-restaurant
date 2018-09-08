@@ -8,14 +8,15 @@ var PORT = 3000;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-/*var array = [];
+//empty array for our reservations
+var array = [];
+//reservion constructor
 function Reserve(name, phoneNumber, email, uniqueId) {
   this.name = name;
   this.phoneNumber = phoneNumber;
   this.email = email;
   this.uniqueId = uniqueId;
-}*/
+}
 //=========================================================
 //index page
 app.get('/', function(req, res) {
@@ -32,6 +33,11 @@ app.get('/view-table', function(req, res) {
 //wait list page
 app.get('/wait-list', function(req, res) {
   res.sendFile(path.join(__dirname, 'waitlist.html'));
+});
+//creating a new reservation
+app.post('/make-reservations', function(req, res) {
+  newReservation = req.body;
+  console.log(newReservation);
 });
 
 //===========================================================
