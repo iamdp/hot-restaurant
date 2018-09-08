@@ -88,6 +88,10 @@ app.get('/add', function(req, res) {
 app.get('/api/reservation', function(req, res) {
   return res.json(reservation);
 });
+// Displays all waitlist
+app.get('/api/waitlist', function(req, res) {
+  return res.json(waitlist);
+});
 
 // Displays a single reservation, or returns false
 app.get('/api/reservation/:reservation', function(req, res) {
