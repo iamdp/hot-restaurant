@@ -1,8 +1,8 @@
 // Dependencies
 // =============================================================
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
 
 // Sets up the Express App
 // =============================================================
@@ -17,54 +17,54 @@ app.use(bodyParser.json());
 // =============================================================
 var reservation = [
   {
-    reservName: "David",
+    reservName: 'David',
     reservPhone: 111 - 222 - 3333,
-    reservEmail: "david@gmail.com",
+    reservEmail: 'david@gmail.com',
     reservDate: 2018 - 09 - 08,
     reservTime: 1700
   },
   {
-    reservName: "Hayley",
+    reservName: 'Hayley',
     reservPhone: 111 - 222 - 3333,
-    reservEmail: "hayley@gmail.com",
+    reservEmail: 'hayley@gmail.com',
     reservDate: 2018 - 09 - 08,
     reservTime: 1700
   },
   {
-    reservName: "Kyle",
+    reservName: 'Kyle',
     reservPhone: 111 - 222 - 3333,
-    reservEmail: "kyle@gmail.com",
+    reservEmail: 'kyle@gmail.com',
     reservDate: 2018 - 09 - 08,
     reservTime: 1700
   },
   {
-    reservName: "Ale",
+    reservName: 'Ale',
     reservPhone: 111 - 222 - 3333,
-    reservEmail: "ale@gmail.com",
+    reservEmail: 'ale@gmail.com',
     reservDate: 2018 - 09 - 08,
     reservTime: 1700
   },
 
   {
-    reservName: "Koro",
+    reservName: 'Koro',
     reservPhone: 111 - 222 - 3333,
-    reservEmail: "koro@gmail.com",
+    reservEmail: 'koro@gmail.com',
     reservDate: 2018 - 09 - 08,
     reservTime: 1700
   }
 ];
 var waitlist = [
   {
-    waitName: "A",
+    waitName: 'A',
     waitPhone: 111 - 222 - 3333,
-    waitEmail: "a@gmail.com",
+    waitEmail: 'a@gmail.com',
     waitDate: 2018 - 09 - 08,
     waitTime: 1700
   },
   {
-    waitName: "B",
+    waitName: 'B',
     waitPhone: 111 - 222 - 3333,
-    waitEmail: "b@gmail.com",
+    waitEmail: 'b@gmail.com',
     waitTime: 1700,
     waitDate: 2018 - 09 - 08
   }
@@ -74,21 +74,21 @@ var waitlist = [
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'home.html'));
 });
 
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+app.get('/add', function(req, res) {
+  res.sendFile(path.join(__dirname, 'add.html'));
 });
 
 // Displays all reservation
-app.get("/api/reservation", function(req, res) {
+app.get('/api/reservation', function(req, res) {
   return res.json(reservation);
 });
 
 // Displays a single reservation, or returns false
-app.get("/api/reservation/:reservation", function(req, res) {
+app.get('/api/reservation/:reservation', function(req, res) {
   var chosen = req.params.reservation;
 
   console.log(chosen);
@@ -99,11 +99,21 @@ app.get("/api/reservation/:reservation", function(req, res) {
     }
   }
 
+  app.post('/api/reservation', function(req, res) {
+    if (reservation.length < 5) {
+      reservation.push(req.body);
+      res.json(true);
+    } else {
+      waitlist.push(req.body);
+      res.json(false);
+    }
+  });
+
   return res.json(false);
 });
 
 // Create New Reservation - takes in JSON input
-app.post("/api/reservation", function(req, res) {
+app.post('/api/reservation', function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
 
   // This works because of our body-parser middleware
@@ -112,7 +122,7 @@ app.post("/api/reservation", function(req, res) {
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
   newreservation.routeName = newcharacter.name
-    .replace(/\s+/g, "")
+    .replace(/\s+/g, '')
     .toLowerCase();
 
   console.log(newreservation);
@@ -125,5 +135,5 @@ app.post("/api/reservation", function(req, res) {
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+  console.log('App listening on PORT ' + PORT);
 });
